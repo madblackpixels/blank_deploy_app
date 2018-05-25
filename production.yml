@@ -51,12 +51,13 @@ services:
       - ./environments/production
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - frontend-app
     volumes:
       - frontend:/frontend
 
-
+ 
 volumes:
   frontend:
   static:

@@ -90,14 +90,14 @@ fi
 
 ####### Prepair nginx.conf for verify #######
 if [[ $env_name = "verify" ]]; then
+	cp ./verify-nginx/validate_page.txt ./verify-nginx/$VALIDATE_PAGE
 
 	rm -rf ./verify-nginx/nginx.conf && cp ./verify-nginx/nginx_tmpl.conf ./verify-nginx/nginx.conf
 
 	sed -i -e "s/server_name ;/server_name $HOST_NAME, www.$HOST_NAME;/" ./verify-nginx/nginx.conf
-	sed -i -e "s/VERIFY_CODE/$VERIFY_CODE/" 							 ./verify-nginx/index.html
+	sed -i -e "s/VALIDATE_PAGE/$VALIDATE_PAGE/" 						 ./verify-nginx/nginx.conf
 
 	rm -rf ./verify-nginx/nginx.conf-e
-	rm -rf ./verify-nginx/index.html-e
 
 fi
 
